@@ -1,0 +1,34 @@
+Inpact
+To-do list 2004
+
+Correct placing of scroll bar after an open/close/prove operation.
+
+Improve efficiency of reading file and accessing names
+
+Add preprocessor for easy entry of repeats:
+3*a -> a a a
+3*a[-1] -> a a a[-1]
+
+Add more music formats:
+*34* -> 34?? ?34? ??34
+*(456)(456)78 -> all crus
+
+Fix bug with music window Save/Load justification
+
+Better error messages: music errors, undefined block, circular defn.
+
+Add help.
+
+Add prefs for fonts, printing format.
+
+Add "Select All"?
+
+Multi-extents?
+
+>16 bells?
+
+Print whole peal?
+
+Ring changes (sound)?
+
+Compatibility with MSIRIL etc?
