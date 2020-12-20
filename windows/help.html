@@ -1,0 +1,96 @@
+<title>Inpact - Help</title>
+
+<h1>Inpact</h1>
+<p align=right>Interactive Proving and Composing Tool
+<br>Version 1.2 (C) Alexander E Holroyd 2004
+</p>
+
+<h3>Overview</h3>
+Inpact is a change-ringing program running under Microsoft Windows.  It is aimed particularly at composers and conductors.  It can handle any method or composition on 4-16 bells.  Touches are entered in a simple "low-level" language similar to MicroSIRIL.  The main innovation is the interactive aspect - the user can edit the touch,  or expand and collapse blocks, and see the effects immediately.  Falseness and musical changes are shown alongside the touch, making it easy to see where they occur.  MicroSIRIL method libraries are supported.
+
+<h3>Installation</h3>
+Copy the files "inpact.exe", "help.html" and the folder "methlib" to a new folder.  Start the program by running inpact.exe.
+
+<h3>Getting started</h3>
+The best way to learn to use Inpact is to try it.
+Here is a simple touch of Plain Bob Minor.  First specify the number of bells by selecting "6" under "Stage".  Then enter the following in the main window (the lowest of the three windows).
+
+<p><font face=courier>
+part[p[lead[&-1-1-1] 2] b[lead 4] p]
+<br>part
+</font></p>
+
+What does this mean?  The touch consists of two identical blocks of changes, named "part".  The first line includes a definition of the block "part", enclosed in brackets.  "part" consists of three more blocks named p b p (plain,bob,plain).  "p" consists of "lead" followed by the single place notation "2", and "lead" consists of the block of place notation "&-1-1-1" (& indicates a symmetric block).  "b" consists of "lead" followed by place notation "4".
+<p>
+To prove the touch, click the right mouse button in the main window (or press F9, or select Touch>>Prove from the menu).  Two things should happen.  A message in the Report window will tell you that the touch is true, and comes round after 72 rows.  Now look at the contents of the main window.
+The part of the display to the left of the column of ":"s is the same as what was input, except lined up in columns emphasising the block structure.  To the right of the ":"s, the row at the end of each block is shown, together with the number of rows.  For example, the first lead end is 135264 (after 16 rows); the second is 135642 (after 16 rows).
+<p>
+Now try right-clicking again - nothing happens!  This is because the program's output (in the main window) is also a valid input.  The same touch was proved again, with the same result.  Anything to the right of a ":" is ignored as input.
+<p>
+Now try double-clicking on the word "lead" (or put the cursor over it and press F8, or select Touch >> Expand/Collapse.  The block collapses, leaving just the name.  The earlier definition of lead is no longer visible, but the program remembers it.  The touch is the same, only written differently.  Double-click "lead" again to expand the block again.  You can expand and collapse other blocks in the same way, and make changes on-the-fly by editing the contents of the main window.  Right-click to see the effects.
+<p>
+Try entering a false touch, e.g. change the definition of part to
+<p><font face=courier>
+part[p b b b]
+</font></p>
+and right-click.  The Report window tells you the touch is false.  The main window shows you where the falseness occurs (the first two visible blocks which are false against each other).  To get more (or less) detail, you can expand (or collapse) the relevant blocks.
+<p>
+Try entering the following in the Music window
+<p><font face=courier>
+135246
+<br>rollups[*56 65*]
+</font></p>
+The first line matches Queen's; the second matches and row of the form ????56 or 65????.  Right-click to see the results.  The Report window gives total music counts, and the main window shows where the music occurs.  Again you can expand blocks to get more detail.
+
+<h3>Syntax</h3>
+Any characters except for [ ] : and whitespace are available for names of blocks.  Whitespace is used to separate blocks.  Bell characters are 1234567890ETABCD  up to the current stage.  Any block name containing only bell characters and any of - X . or the same starting with & is treated as place notation.  Anything from a : character to the end of the line is ignored as input.
+
+<p>Input of the form
+<p><font face=courier>
+block1 [ block2 block3 ... blockn ]
+</font></p>
+is interpreted as an instance of block1, and a  definition of block1 consisting of the list block2 block3 ... blockn.  
+
+Blocks are separated by whitespace.  Space is not necessary adjacent to [ or ].
+
+<h3>Place notation</h3>
+Place notation is written in the usual way.  External places may be omitted.  A cross change is written - or X (not x).  Changes are separated by a . character, which may be omitted adjacent to a - or X.  A block of place notation (with no spaces) preceded by & is interpreted as the first half of a symmetrical block as in MicroSIRIL (note that + is not used, however).  E.g. a lead of plain bob minor can be entered as any of
+<p><font face=courier>
+X 16 X 16 X 16 X 16 X 16 X 12
+<br>-1-1-1-1-1-2
+<br>&-1-1-1 2
+</font></p> 
+
+<h3>Music</h3>
+The following types of music descriptions can be entered in the music window, separated by whitespace.  Whole rows, possibly with "?"s (which match any bell).  One "*" character may be included, which matches any combination of bells of the appropriate length.  Compound music types written as
+<p><font face=courier>
+name [ music1 ... musicn ]
+</font></p>
+will match any row matching the one or more music descriptions music1 .. musicn as described above.
+
+<p>E.g.
+<br>135246 matches Queens
+<br>??3456 matches 123456 and 213456
+<br>*3456 is the same as ??3456 (on 6 bells)
+<br>crus[*5678 *6578 *4678 *6478 *4578 *5478] matches all c.r.u.s (on 8 bells)
+
+<h3>Proving</h3>
+After a touch comes round, subsequent rows are not checked for falseness.  Music is still shown in the main window, but is not included in the totals in the report window.
+
+<h3>Files, editing, printing</h3>
+
+The command in the File, Edit and Music menus work in the usual way.  Saving a file saves all block definitions, including those not currently visible, together with the contents of the music window.  New erases the same information.  Music can be saved separately via the music menu.  File >> Print prints a report on what is currently displayed.  Anything entered in the "Title" window is also printed.
+
+<h3>Method libraries</h3>
+
+You can save time by including a named methods automatically.  First select the correct stage, put the cursor where you want the method to appear, then 
+select Touch >> Insert Method (or press F5).
+
+<p>It is assumed that the folder "methlib" in the working directory contains the MicroSIRIL method libraries.  The libraries suppied may not be the most up-to-date.  Updates can be downloaded via www.ringing.info.  
+
+<p>Select a library from the left column, and find the method in the right column.  Pressing a letter key moves to methods beginnig with that letter.  Double-clicking or clicking "select" adds the current method to the main window.  Pressing return or clicking "Done" adds the current method and exits the method selector.  Closing the window exits without adding the method.
+
+<p>One plain lead of the method is inserted at the cursor.  You may wish to edit the name of the block, and edit the place notation in order to use calls.
+
+<h3>Saved settings</h3>
+You can change the font used (Edit >> Font) and change the sizes of the various windows to suit your system.  When you exit Inpact these settings will be saved and used again next time.  To return to the default setting delete the file "inpcfg.dat" from the working directory.
